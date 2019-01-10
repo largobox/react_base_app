@@ -1,4 +1,9 @@
-import './sass/index.sass';
-import imported_sum from './some_lib';
+import './sass/index.sass'
+import React from 'react'
+import { render } from 'react-dom'
+import AnimalList from './js/animals/list'
 
-imported_sum()
+render(
+    <AnimalList />, 
+    document.getElementById('root')
+)
