@@ -10,7 +10,8 @@ module.exports = {
     },
     devServer: {
         disableHostCheck: true,
-        overlay: true
+        overlay: true,
+        historyApiFallback: true
     },
     module: {
         rules: [

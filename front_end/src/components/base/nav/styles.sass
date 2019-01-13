@@ -11,7 +11,6 @@
         padding: 0px 10px
 
     li
-        @extend %text-first
         background-color: $bg-color-second
         padding: 6px 10px
         margin-top: 10px
@@ -21,3 +20,10 @@
         &:hover
             opacity: 1
             cursor: pointer
+
+        a
+            display: inline-block
+            width: 100%
+
+        span
+            @extend %text-first

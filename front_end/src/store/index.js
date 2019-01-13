@@ -1,6 +1,10 @@
 import { createStore } from 'redux'
 
-const red = () => ['man','woman']
+const red = () => {
+    return {
+        people: ['man','woman']
+    }
+}
 
 const store = createStore(red)
 

@@ -15,12 +15,16 @@ class TownList extends React.Component {
 
         return (
             <div>
-                <span className = 'title'>Maow</span>
+                <span className = 'title'>Список Городов</span>
             </div>  
         )
     }
 }
 
 export default connect(
-    (state) => state
+    (state) => {
+        return {
+            people: state.people
+        }
+    }
 )(TownList)
