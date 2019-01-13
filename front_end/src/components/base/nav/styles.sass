@@ -1,0 +1,23 @@
+.nav-cnt
+    vertical-align: top
+    font-size: 0px
+    display: inline-block
+    min-height: 600px
+    width: 300px
+    background-color: $bg-color-first
+
+    ul
+        list-style: none
+        padding: 0px 10px
+
+    li
+        @extend %text-first
+        background-color: $bg-color-second
+        padding: 6px 10px
+        margin-top: 10px
+        border-radius: 8px
+        opacity: .8
+
+        &:hover
+            opacity: 1
+            cursor: pointer

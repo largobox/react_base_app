@@ -22,7 +22,18 @@ module.exports = {
             {
                 test: /\.sass$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader']
+                    use: [
+                        'css-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                data: '@import "index";',
+                                includePaths: [
+                                    path.resolve(__dirname, "./src/sass")
+                                ]
+                            }
+                        }
+                    ]
                 })
             }
         ]

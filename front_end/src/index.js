@@ -1,17 +1,17 @@
-import './sass/index.sass'
 import React from 'react'
 import { render } from 'react-dom'
 
 import { Provider } from 'react-redux'
 import store from './store'
 
-import TownList from './components/towns/list'
+import App from './app'
 
 console.log('store: ', store)
+window.store = store // ВНИМАНИЕ
 
 render(
     <Provider store = {store}>
-        <TownList />
+        <App />
     </Provider>,
     document.getElementById('root')
 )

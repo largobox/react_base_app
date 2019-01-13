@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default class TownList extends React.Component {
+class TownList extends React.Component {
     render () {
         console.log('Props: ', this.props)
         // fetch('http://localhost:3030/animals')
@@ -20,3 +21,6 @@ export default class TownList extends React.Component {
     }
 }
 
+export default connect(
+    (state) => state
+)(TownList)
