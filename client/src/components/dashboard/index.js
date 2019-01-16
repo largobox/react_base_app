@@ -11,7 +11,6 @@ class Dashboard extends React.Component {
     }
 }
 
-
 export default connect(
     (state) => {
         return {
