@@ -1,0 +1,1 @@
+export const LOAD_ALL_TOWNS = 'LOAD_ALL_TOWNS'

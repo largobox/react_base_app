@@ -1,11 +1,6 @@
 import { createStore } from 'redux'
+import reducer from '../reducers'
 
-const red = () => {
-    return {
-        people: ['man','woman']
-    }
-}
-
-const store = createStore(red)
+const store = createStore(reducer)
 
 export default store

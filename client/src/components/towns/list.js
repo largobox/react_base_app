@@ -3,15 +3,16 @@ import { connect } from 'react-redux'
 
 class TownList extends React.Component {
     render () {
-        console.log('Props: ', this.props)
-        // fetch('http://localhost:3030/animals')
-        //     .then( response => response.json() )
-        //     .then((responseObj) => {
-        //         console.log('responseObj:', responseObj)
-        //     })
-        //     .catch((error) => {
-        //         console.log('Error: ', error)
-        //     })
+        console.log('PROPS: ', this.props)
+
+        fetch('https://limitless-falls-13737.herokuapp.com/towns')
+            .then( response => response.json() )
+            .then((responseObj) => {
+                console.log('responseObj:', responseObj)
+            })
+            .catch((error) => {
+                console.log('Error: ', error)
+            })
 
         return (
             <div>
@@ -24,7 +25,7 @@ class TownList extends React.Component {
 export default connect(
     (state) => {
         return {
-            people: state.people
+            towns: state.towns
         }
     }
 )(TownList)
