@@ -6,7 +6,7 @@ import store from './store'
 
 import App from './app'
 
-console.log('store: ', store)
+// console.log('store: ', store)
 window.store = store // ВНИМАНИЕ
 
 render(

@@ -1,23 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { loadAllTowns } from '../../ac'
+import { townsSelector } from '../../selectors'
 
 class TownList extends React.Component {
-    render () {
-        console.log('PROPS: ', this.props)
+    constructor (props) {
+        super(props)
+    }
 
-        fetch('https://limitless-falls-13737.herokuapp.com/towns')
-            .then( response => response.json() )
-            .then((responseObj) => {
-                console.log('responseObj:', responseObj)
-            })
-            .catch((error) => {
-                console.log('Error: ', error)
-            })
+    componentDidMount () {
+        this.props.loadAllTowns()
+    }    
+
+    get list () {
+        return this.props.towns.list.map( (town) => (
+                <li key = {town.id}>{town.name}</li>
+            )
+        )
+    }
+
+    get preloader () {
+        if (this.props.towns.loading) {
+            return (
+                <span>Загружается...</span>
+            )
+        }
+    }    
+
+    render () {
+        console.log('props: ', this.props)
 
         return (
             <div>
-                <span className = 'title'>Список Городов</span>
-            </div>  
+                <h2>{this.props.header}</h2>
+                {this.preloader}
+                <ul>{ this.list }</ul>
+            </div>
         )
     }
 }
@@ -25,7 +43,8 @@ class TownList extends React.Component {
 export default connect(
     (state) => {
         return {
-            towns: state.towns
+            towns: townsSelector(state)
         }
-    }
+    },
+    { loadAllTowns }
 )(TownList)
