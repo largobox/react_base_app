@@ -8,7 +8,6 @@ import { townSelector, townLoadedSelector, townLoadingSelector } from '../../sel
 class TownItem extends React.Component {
     componentDidMount () {
         this.props.loadTown(this.props.match.params.id)
-        console.log('---componentDidMount---')
     }
 
     get header () {
@@ -54,8 +53,6 @@ class TownItem extends React.Component {
     }
 
     render () {
-        console.log('---render---', this.props)
-
         return (
             <div>
                 { this.props.loaded ? this.content : this.preloader }
@@ -66,7 +63,6 @@ class TownItem extends React.Component {
 
 export default connect(
     (state) => {
-        console.log('---connect---')
         return {
             loaded: townLoadedSelector(state),
             loading: townLoadingSelector(state),

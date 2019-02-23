@@ -10,7 +10,6 @@ class TownList extends React.Component {
 
     componentDidMount () {
         this.props.loadAllTowns()
-        console.log('---componentDidMount---')
     }    
 
     get list () {
@@ -39,7 +38,6 @@ class TownList extends React.Component {
     }
 
     render () {
-        console.log('---render---')
         return (
             <div>
                 {this.header}
