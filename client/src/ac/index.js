@@ -13,7 +13,6 @@ export function loadAllTowns () {
 export function loadTown (id) {
     return {
         type: LOAD_TOWN,
-        callAPI: `/towns/${id}`,
-        payload: { id }
+        callAPI: `/towns/${id}`
     }
 }

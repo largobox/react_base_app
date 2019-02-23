@@ -1,20 +1,23 @@
+import './styles.sass'
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadAllTowns } from '../../ac'
 import { townsSelector } from '../../selectors'
+import { Link } from 'react-router-dom'
 
 class TownList extends React.Component {
-    constructor (props) {
-        super(props)
-    }
 
     componentDidMount () {
         this.props.loadAllTowns()
+        console.log('---componentDidMount---')
     }    
 
     get list () {
         return this.props.towns.list.map( (town) => (
-                <li key = {town.id}>{town.name}</li>
+                <Link to = {`/towns/${town.id}`} key = {town.id} >
+                    <li>{town.name}</li>
+                </Link>
             )
         )
     }
@@ -25,14 +28,21 @@ class TownList extends React.Component {
                 <span>Загружается...</span>
             )
         }
-    }    
+    }
+
+    get header () {
+        return (
+            <div className = 'header-cnt'>
+                <h2>{this.props.header}</h2>
+            </div>            
+        )
+    }
 
     render () {
-        console.log('props: ', this.props)
-
+        console.log('---render---')
         return (
             <div>
-                <h2>{this.props.header}</h2>
+                {this.header}
                 {this.preloader}
                 <ul>{ this.list }</ul>
             </div>

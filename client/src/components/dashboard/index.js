@@ -2,12 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class Dashboard extends React.Component {
-    render () {
+
+    get header () {
         return (
-            <div>
-                <span>Сводная информация</span>
-            </div>  
+            <div className = 'header-cnt'>
+                <h2>{this.props.header}</h2>
+            </div>            
         )
+    }
+
+    render () {
+        return this.header
     }
 }
 

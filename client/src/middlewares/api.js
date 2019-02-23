@@ -10,9 +10,12 @@ export default (store) => (next) => (action) => {
         ...rest
     })
 
-    fetch('https://limitless-falls-13737.herokuapp.com/towns')
+    fetch('https://limitless-falls-13737.herokuapp.com' + callAPI)
         .then(response => response.json())
         .then(responseObj => {
+            console.log('API RESPONSE: ', responseObj)
+            console.log('API TYPE: ', type + SUCCESS)
+
             next({ type: type + SUCCESS, payload: responseObj, ...rest})
         })
         .catch(error => next({ type: type + FAIL, payload: error, ...rest }))
