@@ -2,7 +2,7 @@ import './styles.sass'
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadAllTowns } from '../../ac'
+import { loadAllTowns, deleteTown } from '../../ac'
 import { townsSelector } from '../../selectors'
 import { Link } from 'react-router-dom'
 
@@ -10,13 +10,33 @@ class TownList extends React.Component {
 
     componentDidMount () {
         this.props.loadAllTowns()
-    }    
+
+        this.redirectToEdit = this.redirectToEdit.bind(this)
+        this.redirectToShow = this.redirectToShow.bind(this)
+    }
+
+    redirectToEdit (ev, townId) {
+        ev.stopPropagation()
+        this.props.history.push(`/towns/${townId}/edit`)
+    }
+
+    redirectToShow (ev, townId) {
+        ev.stopPropagation()
+        this.props.history.push(`/towns/${townId}`)
+    }
+
+    redirectToDelete (ev, townId) {
+        ev.stopPropagation()
+        this.props.deleteTown(townId)
+    }
 
     get list () {
         return this.props.towns.list.map( (town) => (
-                <Link to = {`/towns/${town.id}`} key = {town.id} >
-                    <li>{town.name}</li>
-                </Link>
+                <li onClick = { (ev) => this.redirectToShow(ev, town.id) } key = {town.id}>
+                    <span>{town.name}</span>
+                    <i onClick = { (ev) => this.redirectToEdit(ev, town.id) }>Редактировать</i>
+                    <i onClick = { (ev) => this.redirectToDelete(ev, town.id) }>Удалить</i>
+                </li>
             )
         )
     }
@@ -41,6 +61,9 @@ class TownList extends React.Component {
         return (
             <div>
                 {this.header}
+                <Link to = {'/towns/add'}>
+                    <button>Добавить</button>
+                </Link>
                 {this.preloader}
                 <ul>{ this.list }</ul>
             </div>
@@ -54,5 +77,5 @@ export default connect(
             towns: townsSelector(state)
         }
     },
-    { loadAllTowns }
+    { loadAllTowns, deleteTown }
 )(TownList)

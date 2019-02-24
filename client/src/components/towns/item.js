@@ -3,7 +3,7 @@ import './styles.sass'
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadTown } from '../../ac'
-import { townSelector, townLoadedSelector, townLoadingSelector } from '../../selectors'
+import { townSelector, townLoadedSelector } from '../../selectors'
 
 class TownItem extends React.Component {
     componentDidMount () {
@@ -65,7 +65,6 @@ export default connect(
     (state) => {
         return {
             loaded: townLoadedSelector(state),
-            loading: townLoadingSelector(state),
             town: townSelector(state)
         }
     },

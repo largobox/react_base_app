@@ -14,6 +14,7 @@ a
 
 ul
     list-style: none
+    margin: 8px 0px
 
 li
     font-size: $md-text-size
@@ -21,3 +22,26 @@ li
 
 h2
     font-size: $bg-text-size
+
+label
+    display: inline-block
+    width: 150px
+    margin-right: 6px
+    font-size: $md-text-size
+    color: $text-color-first
+
+button, input[type=submit]
+    font-size: $md-text-size
+    cursor: pointer
+    background-color: $text-color-first
+    color: $bg-color-second
+    border: none
+    padding: 8px 22px
+    opacity: .9
+    border-radius: $md-border-radius
+
+    &:hover
+        opacity: 1
+
+    &:focus
+        outline: none

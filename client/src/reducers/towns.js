@@ -1,6 +1,10 @@
 import {
     LOAD_ALL_TOWNS,
     LOAD_TOWN,
+    ADD_TOWN,
+    EDIT_TOWN,
+    DELETE_TOWN,
+
     START,
     SUCCESS,
     FAIL
@@ -23,7 +27,6 @@ export default (state = {}, action) =>
             townState.loaded = false
             return townState
         case LOAD_TOWN + SUCCESS:
-            console.log('REDUCERS payload: ', payload)
             const newState = { ...state }
 
             newState.loaded = true
@@ -36,14 +39,30 @@ export default (state = {}, action) =>
             townsState.loading = true
             return townsState
         case LOAD_ALL_TOWNS + SUCCESS:
-            console.log('REDUCERS payload: ', payload)
             const towns = { ...state }
 
             towns.list = payload
             towns.loading = false
             towns.loaded = true
-
             return towns
+        case ADD_TOWN + START:
+            console.log('ADD_TOWN + START')
+            return state
+        case ADD_TOWN + SUCCESS:
+            console.log('ADD_TOWN + SUCCESS')
+            return state
+        case EDIT_TOWN + START:
+            console.log('EDIT_TOWN + START')
+            return state
+        case EDIT_TOWN + SUCCESS:
+            console.log('EDIT_TOWN + SUCCESS')
+            return state
+        case DELETE_TOWN + START:
+            console.log('DELETE_TOWN + START')
+            return state
+        case DELETE_TOWN + SUCCESS:
+            console.log('DELETE_TOWN + SUCCESS')
+            return state
         default:
             return state
     }

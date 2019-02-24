@@ -10,7 +10,10 @@ export default (store) => (next) => (action) => {
         ...rest
     })
 
-    fetch('https://limitless-falls-13737.herokuapp.com' + callAPI)
+    fetch('https://limitless-falls-13737.herokuapp.com' + callAPI, {
+            method: action.method,
+            body: action.body
+        })
         .then(response => response.json())
         .then(responseObj => {
             console.log('API RESPONSE: ', responseObj)
